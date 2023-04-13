@@ -2,16 +2,26 @@
 const express = require('express');
 const app = express();
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.send('File uploaded');
-});
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb('',Date.now()+file.originalname);
+  }
+})
 
+const upload = multer({ storage: storage });
+//Subiran los archivos, se guardara el nombre del archivo y su extensión
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.send('File uploaded successfully');
+});
 
 app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
