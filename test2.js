@@ -15,7 +15,7 @@ btnsubir.addEventListener("click", (e) => {
   formData
   fetch("http://localhost:3002/upload", {
     method: "POST",
-    body: formData,
+    body: formData
   })
     .then((res) => res.text())
     .then((data) => console.log(data))

@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 app.use("/uploads", express.static("uploads"));
 
 app.post("/upload", upload.single("file"), (req, res) => {
-  res.send("File uploaded successfully");
+  console.log("File uploaded successfully");
 });
 
 app.listen(3002, () => {
