@@ -3,9 +3,7 @@ const express = require("express");
 const app = express();
 const multer = require("multer");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -25,10 +23,13 @@ const storage = multer.diskStorage({
       "-";
       //Se borran los espacios en blanco del nombre del archivo
     const fileName = file.originalname.replace(/\s/g, "_");
-    cb(null, formattedDate + fileName);
-  },
+    //console.log(name);
+    //console.log(req);
+    //cb(null, formattedDate +req.body.nombreArchivo+"-"+fileName);
+    cb(null, fileName);
+  }
 });
-
+// Configurar el middleware Multer
 const upload = multer({ storage: storage });
 //Subiran los archivos, se guardara el nombre del archivo y su extensión
 
