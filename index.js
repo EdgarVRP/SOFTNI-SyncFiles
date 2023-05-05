@@ -2,7 +2,9 @@
 const express = require("express");
 const app = express();
 const multer = require("multer");
-
+//Se importa dotenv para usar las variables de entorno
+require("dotenv").config();
+const port = process.env.PORT || 3002;
 app.use(express.json());
 
 const storage = multer.diskStorage({
@@ -40,6 +42,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
   console.log("File uploaded successfully");
 });
 
-app.listen(3002, () => {
-  console.log("Example app listening on port 3002!");
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
