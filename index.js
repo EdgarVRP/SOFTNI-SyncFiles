@@ -2,6 +2,9 @@
 const express = require("express");
 const app = express();
 const multer = require("multer");
+//Se habilita cors para que se pueda acceder desde cualquier lugar
+const cors = require("cors");
+app.use(cors());
 //Se importa dotenv para usar las variables de entorno
 require("dotenv").config();
 const port = process.env.PORT || 3002;

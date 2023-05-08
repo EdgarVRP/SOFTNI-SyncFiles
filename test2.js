@@ -6,14 +6,18 @@ const file = document.querySelector("#archivo");
       enctype="multipart/form-data"
       */
 
+//let URL="http://localhost:3002/upload";
+let url="https://softni-syncfiles-production.up.railway.app/upload";
+let nombre="8-identificacion.pdf";
+
+
 btnsubir.addEventListener("click", (e) => {
   e.preventDefault();
   const formData = new FormData();
   //formData.append("file", file.files[0]);
-  formData.append("file", file.files[0], "Contrato1.pdf");
+  formData.append("file", file.files[0], nombre);
   //formData.append("nombreArchivo", "mi_nombre_de_archivo");
-  formData
-  fetch("http://localhost:3002/upload", {
+  fetch(url, {
     method: "POST",
     body: formData
   })
