@@ -15,3 +15,5 @@ npm i body-parser
 Se añade el paquete dotenv para determinar las variables de entorno
 
 npm i dotenv
+
+npm i cors
